@@ -1,7 +1,6 @@
 <!--  -->
 <template>
-  <div class="nav-header">
-  </div>
+    <el-header></el-header>
 </template>
 
 <script>

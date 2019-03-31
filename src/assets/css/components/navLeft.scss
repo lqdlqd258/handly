@@ -1,9 +1,7 @@
-.nav-left{
-    width: 6rem;
-    height: 100%;
-    background: #FFFFFF;
-    position: absolute;
-    top: 1.2rem;
-    left: 0;
-    z-index: 1;
+.el-aside{
+    width: 200px !important;
+    overflow: hidden;
+    .el-menu{
+        border-right:none;
+    }
 }

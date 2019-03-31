@@ -1,9 +1,11 @@
 <!--  -->
 <template>
-  <div class="home">
-      <nav-Header></nav-Header>
-      <nav-Left></nav-Left>
-      <container></container>
+  <div>
+        <nav-Header></nav-Header>
+        <el-container>
+          <nav-Left></nav-Left>
+          <el-main>Main</el-main>
+        </el-container>
   </div>
 </template>
 <script>
