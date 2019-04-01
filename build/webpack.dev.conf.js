@@ -9,7 +9,18 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
+//添加mock数据
+//node.js开发框架express，用来简化操作
+const express = require('express')
+//创建node.js的express开发框架实例
+const app = express()
+//加载本地的json地址(模拟数据mock)
+var routers= require('../mock/router.json')
 
+var apiRoutes = express.Router()
+//使用这个插件
+app.use('/api',apiRoutes)
+//
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
@@ -42,6 +53,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
       poll: config.dev.poll,
+    },
+    //添加mock接口数据
+    before(app){
+      app.get('/api/routers',(req,res) => {
+        res.json(routers);
+       //接口返回json数据，上面配置的数据goodsData就赋值给data请求后调用
+      })
     }
   },
   plugins: [

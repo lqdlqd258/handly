@@ -1,7 +1,7 @@
 <!--  -->
 <template>
    <el-aside>
-      <el-menu>
+      <el-menu default-active='2-1-1'>
         <el-menu-item index="1">
           <i class="el-icon-setting"></i>
           <span slot="title">主页</span>

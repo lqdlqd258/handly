@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import home from '@/views/home/home'
+import index from '@/views/index'
 
 Vue.use(Router)
 
@@ -9,8 +9,14 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: home
-    }
+      name: 'index',
+      component: index
+    },
+    {
+      path: '/',
+      name: 'index',
+      component: index
+    },
+    
   ]
 })

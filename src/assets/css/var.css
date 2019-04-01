@@ -6,6 +6,6 @@ html, body {
   position: relative;
 }
 
-html {
-  font-size: 40px;
+body > div {
+  height: 100%;
 }

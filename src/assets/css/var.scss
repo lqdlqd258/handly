@@ -2,7 +2,13 @@
 $main-color:#0073F3;
 //字体色
 $font-color:#333333;
-
+//字体大小
+$fs0:14px;
+$fs1:16px;
+$fs2:18px;
+$fs3:20px;
+//顶部高度
+$header-height:48px;
 html,body{  
     height: 100%;  
     width: 100%;
@@ -10,9 +16,9 @@ html,body{
     margin: 0;
     position: relative;
 }
-html{
-    font-size: 40px;
-}
+// html{
+//     font-size: 40px;
+// }
 body > div{
     height: 100%;
 }
