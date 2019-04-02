@@ -1,0 +1,48 @@
+/***
+pop-ups
+***/
+.middle{
+  vertical-align: middle;
+  display: table-cell;
+  text-align: center;
+}
+.middle span{
+  position: relative;
+  display: inline-block;
+  top:auto;
+  left: auto;
+  color: black;
+  width: auto;
+  height: auto;
+  color: #fff;
+}
+/* .fa-close{
+    color:#000;
+    opacity: 0.3;
+    margin-top: 4px;
+} */
+/* .fa-close:hover{
+    opacity: 1;
+} */
+.layeroutsuccess,.layeroutfail{
+  position: absolute;
+  width:auto;
+  height: 45px;
+  top: 55px;
+  right: -300px;
+  z-index: 999999;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 16px; 
+  display: table;
+
+}
+.layeroutsuccess{
+  border:2px solid #5CC1B9;
+  background: #5CC1B9;
+
+}
+.layeroutfail{
+  border:2px solid #EF9D58;
+  background: #EF9D58;
+}

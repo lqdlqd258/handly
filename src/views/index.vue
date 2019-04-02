@@ -25,7 +25,7 @@ export default {
       container
   },
   mounted(){
-      this.getRouters();
+      // this.getRouters();
   },
   methods:{
       getRouters(){

@@ -7,28 +7,42 @@
         img{width:125px;height: 48px;}
         display: inline-block;
     } 
-    .header-font {
+    .header-syetem {
         height: $header-height;
         float: right;
         display: inline-block;
+        margin-right: 20px;
         span{
             height: $header-height;
             line-height:  $header-height;
             display:inline-block;
             font-size:$fs1;
-            color:#ffffff;
+            color:$color-white;
         }
     } 
-    .header-personal{
-        width: 50px;
+    .header-user{
+        width: 80px;
         height: $header-height;
         float: right;
         display: inline-block;
         i{
-            color: #ffffff;
+            color: $color-white;
             font-size: 28px;
             line-height: $header-height;
-            float: right;
+            float: left;
+        }
+        span{
+            width: 52px;
+            height:$header-height;
+            color: $color-white;
+            font-size: $fs1;
+            text-align: center;
+            line-height: $header-height;
+            float: left;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
     }
 }

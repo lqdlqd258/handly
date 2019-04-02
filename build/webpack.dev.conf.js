@@ -16,7 +16,7 @@ const express = require('express')
 const app = express()
 //加载本地的json地址(模拟数据mock)
 var routers= require('../mock/router.json')
-
+var user = require('../mock/user.json')
 var apiRoutes = express.Router()
 //使用这个插件
 app.use('/api',apiRoutes)
@@ -59,7 +59,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       app.get('/api/routers',(req,res) => {
         res.json(routers);
        //接口返回json数据，上面配置的数据goodsData就赋值给data请求后调用
-      })
+      });
+      app.get('/api/user',(req,res) => {
+        res.json(routers);
+       //接口返回json数据，上面配置的数据goodsData就赋值给data请求后调用
+      });
     }
   },
   plugins: [
