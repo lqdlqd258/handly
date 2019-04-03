@@ -3,18 +3,20 @@ import App from './App'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import router from './router'
-// import store from '@/store/index.js'
+import state from '@/store/index'
+import mutations from '@/store/mutations'
 import Vuex from 'vuex'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(Vuex)
-
-// const store = new Vuex.Store(store)
-/* eslint-disable no-new */
+export const store = new Vuex.Store({
+    state,
+    mutations
+})
 new Vue({
   el: '#app',
-  stores,
+  store,
   router,
   components: { App },
   template: '<App/>'

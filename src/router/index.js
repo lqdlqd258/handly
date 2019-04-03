@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/views/index'
 import login from '@/views/login/login'
-// import store from '@/store/index.js'
+import {store} from '@/main.js'
 
 Vue.use(Router)
 
@@ -25,10 +25,12 @@ const router = new Router({
     ]
 })
 router.beforeEach((to,from,next)=>{
-    console.log(to.meta.requireAuth);
     if(to.meta.requireAuth){
-      // console.log(store.state.token);
-      next();
+      if(store.state.token){
+          next();
+      }else{
+          next({path:'/'});
+      }
     }else{
       next();
     }
