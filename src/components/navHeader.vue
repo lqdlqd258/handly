@@ -28,6 +28,7 @@ export default {
     checkLogin(){
       axios.get('/api/user',null).then((respone)=>{
         let userName = respone.data.result[0].userName;
+        console.log(this);
         this.$store.commit("updatauserName",userName);
       });
     }
