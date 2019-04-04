@@ -78,14 +78,20 @@ export default {
   },
   methods:{
     login(){
-        // axios.post('',{
-        //   userName:this.userName,
-        //   userPwd:this.userPwd
-        // }).then((res)=>{
-        //   let res = res.data;
-            //  this.$router.push({name:"index"})
-        // });
-        console.log(this.userName,this.userPwd);
+        axios.get('/api/user',null).then((respone)=>{
+          let data = respone.data.result;
+          let userName = data.userName;
+          let token = data.token;
+          let router = data.router;
+          console.log(router);
+          this.$store.commit("updatatoken",token);
+          this.$store.commit("updatauserName",userName);
+          this.$store.commit("updatarouter",router);
+          this.$router.push({name:'index'});
+      }).catch((err)=>{
+          console.log(err)
+      });
+
     }
   }
 }

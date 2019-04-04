@@ -61,7 +61,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
        //接口返回json数据，上面配置的数据goodsData就赋值给data请求后调用
       });
       app.get('/api/user',(req,res) => {
-        res.json(routers);
+        res.json(user);
        //接口返回json数据，上面配置的数据goodsData就赋值给data请求后调用
       });
     }

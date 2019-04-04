@@ -1,32 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '@/views/index'
-import login from '@/views/login/login'
-import {store} from '@/main.js'
+import state from '@/store/index'
+import routers from '@/router/moudles/router'
 
 Vue.use(Router)
 
-const router = new Router({
-    mode:'history',
-    routes:[
-      {
-        path: '/',
-        name: 'login',
-        component: login
-      },
-      {
-        path: '/index',
-        name: 'index',
-        meta:{
-          requireAuth:true
-        },
-        component: index
-      }
-    ]
-})
+const router = new Router(
+  routers
+)
 router.beforeEach((to,from,next)=>{
     if(to.meta.requireAuth){
-      if(store.state.token){
+      if(state.token){
           next();
       }else{
           next({path:'/'});
