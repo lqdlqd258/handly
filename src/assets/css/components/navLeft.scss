@@ -1,7 +1,17 @@
-.el-aside{
+.scroll-hidden-out{
     width: 200px !important;
+    margin-top: 48px;
     overflow: hidden;
-    .el-menu{
-        border-right:none;
+    position: relative;
+    .el-aside{
+        width: 220px !important;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        overflow: scroll;
+        overflow-x: hidden;
+        .el-menu{
+            border-right:none;
+        }
     }
 }

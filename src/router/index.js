@@ -13,7 +13,7 @@ router.beforeEach((to,from,next)=>{
       if(state.token){
           next();
       }else{
-          next({path:'/'});
+          next({path:'/login'});
       }
     }else{
       next();

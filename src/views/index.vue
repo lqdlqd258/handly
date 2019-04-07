@@ -4,7 +4,9 @@
         <nav-Header></nav-Header>
         <el-container>
           <nav-Left></nav-Left>
-          <el-main>Main</el-main>
+          <el-main>
+            <router-view></router-view>
+          </el-main>
         </el-container>
   </div>
 </template>

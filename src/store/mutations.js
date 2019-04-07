@@ -12,7 +12,7 @@ const mutations = {
         },
         updatarouter(state,router){
           state.router = router;
-          sessionStorage.router = router;
+          sessionStorage.setItem('router',JSON.stringify(router));
         }
 }
 export default mutations
