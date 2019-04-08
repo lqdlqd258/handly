@@ -7,7 +7,7 @@
       <div class="header-user">
         <el-dropdown>
           <span class="el-dropdown-link">
-            <span><i class="el-icon-mobile-phone"></i></span><span>{{username}}</span>
+            <span><i class="el-icon-mobile-phone"></i></span><span v-text="userName"></span>
           </span>
           <el-dropdown-menu slot="dropdown" placement="10">
             <el-dropdown-item>更改头像</el-dropdown-item>
@@ -24,15 +24,14 @@
 </template>
 <script>
 import axios from 'axios'
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
     };
   },
   computed:{
-    username(){
-      return this.$store.state.userName;
-    }
+    ...mapState(['userName'])
   },
   mounted(){
     this.checkLogin();
