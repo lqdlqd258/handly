@@ -2,8 +2,8 @@
     width: 100%;
     height: $header-height !important;
     background: $main-color;
-    position: fixed;
-    z-index: 999999;
+    position: absolute;
+    z-index: 1;
     top: 0;
     .header-img{
         height: 48px;

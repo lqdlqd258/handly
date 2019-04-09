@@ -2,7 +2,7 @@
 <template>
     <el-header>
       <div class="header-img">
-        <!-- <img src="../assets/img/navHeader/home_logo .jpg" alt=""> -->
+        <img src="../assets/img/navHeader/home_logo.jpg" alt="德利特" height="48">
       </div>
       <div class="header-user">
         <el-dropdown>

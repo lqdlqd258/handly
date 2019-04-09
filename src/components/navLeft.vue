@@ -2,7 +2,7 @@
 <template>
   <div class="scroll-hidden-out">
    <el-aside>
-      <el-menu default-active='homeindex' router @open="handleOpen" @close="handleClose">
+      <el-menu :default-active="$route.name" router @open="handleOpen" @close="handleClose">
         <el-menu-item v-for="(item,i) in navList" :key="i" v-if="!item.second" :index="item.path">
           <i class="el-icon-setting"></i>
           <span slot="title">{{item.navName}}</span>
@@ -37,7 +37,8 @@ export default {
   },
   methods:{
     handleOpen(index,indexPath){
-      console.log('handleOpen',index,indexPath);
+      // console.log('handleOpen',index,indexPath);
+      console.log($router.name);
     },
     handleClose(index,indexPath){
       console.log('handleClose',index,indexPath);
