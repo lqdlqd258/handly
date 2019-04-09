@@ -16,7 +16,7 @@
         <el-button type="primary blue" @click="onSubmit">查询</el-button>
         <el-button type="primary blue" @click="onSubmit">添加分机</el-button>
         <el-button type="primary red" @click="onSubmit">分机解绑</el-button>
-        <el-button type="text" @click="dialogShow=true">点击打开 Dialog</el-button>
+        <el-button type="text" @click="dialogshow=true">点击打开 Dialog</el-button>
       </el-form-item>
     </el-form>
     </div>
@@ -62,7 +62,7 @@
   </el-table>
   </div>
   <!-- 模态框 -->
-  <modal :dialogShow='dialogShow' @update:visible="dialogShow = $event"></modal>
+  <modal :dialogshow.sync="dialogshow"></modal>
   <!-- 分页 -->
       <div class="pagination">
         <div class="block">
@@ -167,7 +167,7 @@
           user: '',
           region: ''
         },
-        dialogShow:false
+        dialogshow:false
       }
       
     },
