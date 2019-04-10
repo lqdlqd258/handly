@@ -1,0 +1,30 @@
+.el-dialog__header{
+    text-align: left;
+    span{
+        margin-left:20px;
+    }
+    .el-dialog__title{
+        color: #333333;
+        font-size: 16px;
+        font-weight: 600;
+    }
+}
+.el-dialog--center .el-dialog__body{
+    text-align: center;
+    padding: 0px 40px 10px;
+}
+.el-tabs__header{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.el-tabs__nav-wrap
+.el-tabs__nav-scroll
+.el-tabs__nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.el-tabs__item{
+    padding: 0 33px;
+}

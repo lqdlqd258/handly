@@ -16,7 +16,6 @@
         <el-button type="primary blue" @click="onSubmit">查询</el-button>
         <el-button type="primary blue" @click="onSubmit">添加分机</el-button>
         <el-button type="primary red" @click="onSubmit">分机解绑</el-button>
-        <el-button type="text" @click="dialogshow=true">点击打开 Dialog</el-button>
       </el-form-item>
     </el-form>
     </div>
@@ -55,14 +54,41 @@
       label="操作"
       width="100">
       <template slot-scope="scope" >
-        <el-button type="text" size="small edit">编辑</el-button>
-        <el-button type="text" size="small delete">删除</el-button>
+        <el-button type="text" size="small edit" @click="dialog('编辑')">编辑</el-button>
+        <el-button type="text" size="small delete" @click="dialog('删除')">删除</el-button>
       </template>
     </el-table-column>
   </el-table>
   </div>
   <!-- 模态框 -->
-  <modal :dialogshow.sync="dialogshow"></modal>
+  <modal :title="title" :dialogshow.sync="dialogshow">
+     <span slot="main">
+       <el-tabs v-model="activeName">
+        <el-tab-pane label="用户管理" name="first">
+          <!--  -->
+          <el-form ref="form" label-width="80px" label-position="left">
+            <el-form-item label="分机号">
+              <el-input ></el-input>
+            </el-form-item>
+            <el-form-item label="用户名称">
+              <el-input ></el-input>
+            </el-form-item>
+            <el-form-item label="密码">
+              <el-input ></el-input>
+            </el-form-item>
+          </el-form>
+          <!--  -->
+        </el-tab-pane>
+        <el-tab-pane label="配置管理" name="second">
+          <el-radio disabled v-model="radio1" label="禁用">备选项</el-radio>
+          <el-radio disabled v-model="radio1" label="选中且禁用">备选项</el-radio>
+        </el-tab-pane>
+        <el-tab-pane label="角色管理" name="third">
+          角色管理
+        </el-tab-pane>
+      </el-tabs>
+     </span>
+  </modal>
   <!-- 分页 -->
       <div class="pagination">
         <div class="block">
@@ -167,7 +193,10 @@
           user: '',
           region: ''
         },
-        dialogshow:false
+        dialogshow:false,
+        title:null,
+         //弹窗标签页
+        activeName:'first'
       }
       
     },
@@ -182,6 +211,10 @@
       //分页
       handleCurrentChange(val) {
         console.log(`当前页: ${val}`);
+      },
+      dialog(e){
+        this.dialogshow = true;
+        this.title = e;
       }
     }
   }
