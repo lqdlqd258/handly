@@ -14,13 +14,14 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary blue" @click="onSubmit">查询</el-button>
-        <el-button type="primary blue" @click="onSubmit">添加分机</el-button>
-        <el-button type="primary red" @click="onSubmit">分机解绑</el-button>
+        <el-button type="primary blue" @click="dialog('添加分机','add')">添加分机</el-button>
+        <el-button type="danger" @click="onSubmit">分机解绑</el-button>
       </el-form-item>
     </el-form>
     </div>
     <!-- #eef1f6 -->
   <div class="container">
+
    <el-table :header-cell-style="{background:'#eef1f6',color:'#606266'}"
     :data="tableData"
     style="width: 100%">
@@ -54,19 +55,21 @@
       label="操作"
       width="100">
       <template slot-scope="scope" >
-        <el-button type="text" size="small edit" @click="dialog('编辑')">编辑</el-button>
-        <el-button type="text" size="small delete" @click="dialog('删除')">删除</el-button>
+        <el-button type="text" size="small edit" @click="dialog('编辑','edit')">编辑</el-button>
+        <!-- <el-button type="text" size="small delete" @click="dialog('删除','delete')">删除</el-button> -->
+        <el-button type="text" size="small delete" @click="open2">删除</el-button>
       </template>
     </el-table-column>
   </el-table>
   </div>
   <!-- 模态框 -->
-  <modal :title="title" :dialogshow.sync="dialogshow">
-     <span slot="main">
+  <dialog-modal :title="title" :slotname="slotname" :dialogshow.sync="dialogshow">
+    <!-- <span :slot="delete" class="warning-padding"></span> -->
+     <span :slot="slotname">
+       <el-form ref="form" label-width="100px" label-position="left">
        <el-tabs v-model="activeName">
         <el-tab-pane label="用户管理" name="first">
           <!--  -->
-          <el-form ref="form" label-width="80px" label-position="left">
             <el-form-item label="分机号">
               <el-input ></el-input>
             </el-form-item>
@@ -76,19 +79,63 @@
             <el-form-item label="密码">
               <el-input ></el-input>
             </el-form-item>
-          </el-form>
           <!--  -->
         </el-tab-pane>
         <el-tab-pane label="配置管理" name="second">
-          <el-radio disabled v-model="radio1" label="禁用">备选项</el-radio>
-          <el-radio disabled v-model="radio1" label="选中且禁用">备选项</el-radio>
+           <el-form-item label="语音留言：">
+              <el-radio v-model="radio" label="1">打开</el-radio>
+              <el-radio v-model="radio" label="2">关闭</el-radio>
+            </el-form-item>
+            <el-form-item label="远程分机">
+              <el-radio v-model="radio" label="1">打开</el-radio>
+              <el-radio v-model="radio" label="2">关闭</el-radio>
+            </el-form-item>
+            <el-form-item label="网页登陆">
+              <el-radio v-model="radio" label="1">打开</el-radio>
+              <el-radio v-model="radio" label="2">关闭</el-radio>
+            </el-form-item>
+             <el-form-item label="视频通话">
+              <el-radio v-model="radio" label="1">打开</el-radio>
+              <el-radio v-model="radio" label="2">关闭</el-radio>
+            </el-form-item>
+            <el-form-item label="通话录音">
+              <el-select v-model="form.region" placeholder="请选择活动区域">
+                <el-option label="呼入" value="呼入"></el-option>
+                <el-option label="呼出" value="呼出"></el-option>
+                <el-option label="呼入和呼出" value="呼入和呼出"></el-option>
+                <el-option label="关闭" value="关闭"></el-option>
+              </el-select>
+            </el-form-item>
+           <el-form-item label="语言信箱密码">
+              <el-input ></el-input>
+            </el-form-item>
         </el-tab-pane>
         <el-tab-pane label="角色管理" name="third">
-          角色管理
+           <el-form-item label="挂机短信：">
+              <el-radio v-model="radio" label="1">打开</el-radio>
+              <el-radio v-model="radio" label="2">关闭</el-radio>
+            </el-form-item>
+            <el-form-item label="含分机号码：">
+              <el-radio v-model="radio" label="1">打开</el-radio>
+              <el-radio v-model="radio" label="2">关闭</el-radio>
+            </el-form-item>
+            <el-form-item label="挂机短信">
+              <el-radio v-model="radio" label="1">打开</el-radio>
+              <el-radio v-model="radio" label="2">关闭</el-radio>
+            </el-form-item>
+            <el-form-item label="方向">
+              <el-select v-model="form.region" placeholder="请选择活动区域">
+                <el-option label="呼入" value="呼入"></el-option>
+                <el-option label="呼出" value="呼出"></el-option>
+                <el-option label="呼入和呼出" value="呼入和呼出"></el-option>
+                <el-option label="关闭" value="关闭"></el-option>
+              </el-select>
+            </el-form-item>
         </el-tab-pane>
       </el-tabs>
+      </el-form>
      </span>
-  </modal>
+  </dialog-modal>
   <!-- 分页 -->
       <div class="pagination">
         <div class="block">
@@ -105,7 +152,7 @@
 </template>
 
 <script>
-  import modal from '../../components/modal'
+  import dialogModal from '../../components/dialogModal'
   export default {
     data() {
       return {
@@ -193,15 +240,22 @@
           user: '',
           region: ''
         },
+        //模态框
         dialogshow:false,
         title:null,
+        slotname:null,
          //弹窗标签页
-        activeName:'first'
+        activeName:'first',
+        //单选框
+        radio: '1',
+        form: {
+          region: ''
+        }
       }
       
     },
     components:{
-      modal
+      dialogModal
     },
     methods:{
       //查询提交
@@ -212,9 +266,28 @@
       handleCurrentChange(val) {
         console.log(`当前页: ${val}`);
       },
-      dialog(e){
+      dialog(name,slotname){
         this.dialogshow = true;
-        this.title = e;
+        this.title = name;
+        this.slotname = slotname;
+      },
+      open2() {
+        this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning',
+          center: true
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        });
       }
     }
   }

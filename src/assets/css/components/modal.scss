@@ -1,5 +1,6 @@
 .el-dialog__header{
     text-align: left;
+    border-bottom: solid 1px #dcdcdc;
     span{
         margin-left:20px;
     }
@@ -11,8 +12,19 @@
 }
 .el-dialog--center .el-dialog__body{
     text-align: center;
-    padding: 0px 40px 10px;
+    padding: 10px 40px 10px;
+    color: #606266;
+    .el-tabs__content{
+        padding: 10px 0 0 0;
+    }
+    .warning-padding {
+        margin: 70px 0;
+        display: block;
+        font-size: 16px;
+    }
 }
+
+//tabs标签页
 .el-tabs__header{
     width: 100%;
     display: flex;
@@ -26,5 +38,22 @@
     justify-content: space-around;
 }
 .el-tabs__item{
-    padding: 0 33px;
+    padding: 0 63px;
+}
+.el-select__input {
+
+    vertical-align: baseline;
+
+}
+//Select选择器修复
+.el-select-dropdown.el-popper{
+    height: auto;
+}
+.el-select{
+    width: 100%;
+}
+//MessageBox 弹框
+.el-message.el-message--success,
+.el-message.el-message--info{
+    height: auto;
 }

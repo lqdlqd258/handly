@@ -63,7 +63,15 @@
     height: 32px;
     line-height: 8px;
 }
+
 .delete{
+    color: #ff7b8c;
+}
+.delete:hover{
+    opacity:0.7;
+    color: #ff7b8c;
+}
+.delete:focus{
     color: #ff7b8c;
 }
 //查询

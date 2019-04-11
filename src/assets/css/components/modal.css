@@ -1,5 +1,6 @@
 .el-dialog__header {
   text-align: left;
+  border-bottom: solid 1px #dcdcdc;
 }
 
 .el-dialog__header span {
@@ -14,7 +15,18 @@
 
 .el-dialog--center .el-dialog__body {
   text-align: center;
-  padding: 0px 40px 10px;
+  padding: 10px 40px 10px;
+  color: #606266;
+}
+
+.el-dialog--center .el-dialog__body .el-tabs__content {
+  padding: 10px 0 0 0;
+}
+
+.el-dialog--center .el-dialog__body .warning-padding {
+  margin: 70px 0;
+  display: block;
+  font-size: 16px;
 }
 
 .el-tabs__header {
@@ -32,5 +44,22 @@
 }
 
 .el-tabs__item {
-  padding: 0 33px;
+  padding: 0 63px;
+}
+
+.el-select__input {
+  vertical-align: baseline;
+}
+
+.el-select-dropdown.el-popper {
+  height: auto;
+}
+
+.el-select {
+  width: 100%;
+}
+
+.el-message.el-message--success,
+.el-message.el-message--info {
+  height: auto;
 }
