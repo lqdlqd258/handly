@@ -14,8 +14,8 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary blue" @click="onSubmit">查询</el-button>
-        <el-button type="primary blue" @click="dialog('添加分机','add')">添加分机</el-button>
-        <el-button type="danger" @click="onSubmit">分机解绑</el-button>
+        <el-button type="primary blue" @click="dialog('添加分机','add-edit')">添加分机</el-button>
+        <el-button type="danger" @click="dialog('分机解绑','extensionUntie')">分机解绑</el-button>
       </el-form-item>
     </el-form>
     </div>
@@ -55,7 +55,7 @@
       label="操作"
       width="100">
       <template slot-scope="scope" >
-        <el-button type="text" size="small edit" @click="dialog('编辑','edit')">编辑</el-button>
+        <el-button type="text" size="small edit" @click="dialog('编辑','add-edit')">编辑</el-button>
         <!-- <el-button type="text" size="small delete" @click="dialog('删除','delete')">删除</el-button> -->
         <el-button type="text" size="small delete" @click="open2">删除</el-button>
       </template>
@@ -64,8 +64,8 @@
   </div>
   <!-- 模态框 -->
   <dialog-modal :title="title" :slotname="slotname" :dialogshow.sync="dialogshow">
-    <!-- <span :slot="delete" class="warning-padding"></span> -->
-     <span :slot="slotname">
+    <span slot="extensionUntie">extensionUntie</span>
+     <span slot="add-edit">
        <el-form ref="form" label-width="100px" label-position="left">
        <el-tabs v-model="activeName">
         <el-tab-pane label="用户管理" name="first">
@@ -137,9 +137,9 @@
      </span>
   </dialog-modal>
   <!-- 分页 -->
-      <div class="pagination">
-        <div class="block">
-          <el-pagination
+    <div class="pagination">
+      <div class="block">
+        <el-pagination
             @current-change="handleCurrentChange"
             :current-page="currentPage4"
             :page-size="100"
@@ -148,7 +148,7 @@
           </el-pagination>
         </div>
       </div>
-  </div>
+   </div>
 </template>
 
 <script>
@@ -271,7 +271,7 @@
         this.title = name;
         this.slotname = slotname;
       },
-      open2() {
+      open2(){
         this.$confirm('此操作将永久删除该数据, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -280,12 +280,14 @@
         }).then(() => {
           this.$message({
             type: 'success',
-            message: '删除成功!'
+            message: '删除成功!',
+            duration: 800
           });
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消删除'
+            message: '已取消删除',
+            duration: 800
           });
         });
       }
